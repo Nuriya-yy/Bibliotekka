@@ -1,0 +1,291 @@
+﻿<Page x:Class="Bibliotekka.NewBooks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bibliotekka"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="900"
+      Title="NewBooks">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFC9C9C9"/>
+                <GradientStop Color="#FFF3B4EE" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Margin="40,25,40,25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.ColumnSpan="2" 
+                    CornerRadius="20" 
+                    Margin="0,0,0,25"
+                    Padding="20"
+                    ClipToBounds="True"
+                    BorderBrush="#FFA5A5A6"
+                    BorderThickness="3">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE4AFE6"/>
+                        <GradientStop Color="#FF564D4D" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Text="ДОБАВИТЬ НОВУЮ КНИГУ" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#FF565454"
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+
+            <TextBlock Grid.Row="1" Grid.Column="0" 
+                       Text="📚 Информация о книге" 
+                       FontSize="20" 
+                       FontWeight="Bold" 
+                       Foreground="#FF565454"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" 
+                       Text="Название книги:" 
+                       FontSize="14" 
+                       Foreground="White"
+                       Margin="0,0,0,5"/>
+
+            <TextBox Grid.Row="3" Grid.Column="0" 
+                     x:Name="nameBook" 
+                     TextWrapping="Wrap"
+                     MinHeight="35"
+                     Height="35"
+                     Margin="0,0,25,15"
+                     FontSize="14"
+                     BorderThickness="2"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" 
+                       Text="Все книги:" 
+                       FontSize="14" 
+                       Foreground="White"
+                       Margin="0,0,0,5"/>
+
+            <ComboBox Grid.Row="5" Grid.Column="0" 
+                      x:Name="booksBox" 
+                      MinHeight="35"
+                      Height="35"
+                      Margin="0,0,25,15"
+                      FontSize="14"
+                      BorderThickness="2"
+                      SelectionChanged="booksBox_SelectionChanged"/>
+
+            <WrapPanel Grid.Row="6" Grid.Column="0" 
+                       Margin="0,5,10,50" Grid.RowSpan="2">
+                <Button x:Name="AddBookButton" 
+                        Content="➕ Добавить книгу" 
+                        Width="130"
+                        Height="35"
+                        Margin="0,0,10,5"
+                        Background="#FF777476"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="AddBookButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button x:Name="DeleteBookButton" 
+                        Content="🗑️ Удалить книгу" 
+                        Width="130"
+                        Height="35"
+                        Margin="0,0,10,5"
+                        Background="#FF513754"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="DeleteBookButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="ClearBookButton" 
+                        Content="🧹 Очистить" 
+                        Width="110"
+                        Height="35"
+                        Background="#FF8A65A0"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="ClearBookButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </WrapPanel>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" 
+                       Text="✍️ Авторы" 
+                       FontSize="20" 
+                       FontWeight="Bold" 
+                       Foreground="#FF565454"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="1" 
+                       Text="Имя:" 
+                       FontSize="14" 
+                       Foreground="White"
+                       Margin="0,0,0,5"/>
+
+            <TextBox Grid.Row="3" Grid.Column="1" 
+                     x:Name="nameAuthor" 
+                     TextWrapping="Wrap"
+                     MinHeight="35"
+                     Height="35"
+                     Margin="0,0,0,15"
+                     FontSize="14"
+                     BorderThickness="2"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="1" 
+                       Text="Фамилия:" 
+                       FontSize="14" 
+                       Foreground="White"
+                       Margin="0,0,0,5"/>
+
+            <TextBox Grid.Row="5" Grid.Column="1" 
+                     x:Name="FirstNameAuthor" 
+                     TextWrapping="Wrap"
+                     MinHeight="35"
+                     Height="35"
+                     Margin="0,0,0,15"
+                     FontSize="14"
+                     BorderThickness="2"/>
+
+            <TextBlock Grid.Row="6" Grid.Column="1" 
+                       Text="Отчество:" 
+                       FontSize="14" 
+                       Foreground="White"
+                       Margin="0,0,0,5"/>
+
+            <TextBox Grid.Row="7" Grid.Column="1" 
+                     x:Name="LastNameAuthor" 
+                     TextWrapping="Wrap"
+                     MinHeight="35"
+                     Height="35"
+                     Margin="0,0,0,15"
+                     FontSize="14"
+                     BorderThickness="2"/>
+
+            <TextBlock Grid.Row="8" Grid.Column="1" 
+                       Text="Все авторы:" 
+                       FontSize="14" 
+                       Foreground="White"
+                       Margin="0,0,0,5"/>
+
+            <ComboBox Grid.Row="9" Grid.Column="1" 
+                      x:Name="authorBox" 
+                      MinHeight="35"
+                      Height="35"
+                      Margin="0,0,0,15"
+                      FontSize="14"
+                      BorderThickness="2"
+                      SelectionChanged="authorBox_SelectionChanged"/>
+
+            <WrapPanel Grid.Row="10" Grid.Column="1" 
+                       Margin="0,5,0,70">
+                <Button x:Name="AddAuthorButton" 
+                        Content="➕ Добавить автора" 
+                        Width="135"
+                        Height="35"
+                        Margin="0,0,10,5"
+                        Background="#FF777476"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="AddAuthorButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button x:Name="DeleteAuthorButton" 
+                        Content="🗑️ Удалить автора" 
+                        Width="130"
+                        Height="35"
+                        Margin="0,0,10,5"
+                        Background="#FF3F2747"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="DeleteAuthorButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button x:Name="ClearAuthorButton" 
+                        Content="🧹 Очистить" 
+                        Width="110"
+                        Height="35"
+                        Margin="0,0,0,5"
+                        Background="#FF8A65A0"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="ClearAuthorButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </WrapPanel>
+            <Button x:Name="AuthorBooks" Grid.Column="1" Content="Связать&gt;&gt;" HorizontalAlignment="Left" Margin="290,0,0,0" Grid.Row="10" VerticalAlignment="Center" Height="30" Width="110" Background="#FF777476" BorderBrush="#FF3F2747" FontWeight="Bold" Foreground="White" FontSize="16" Click="AuthorBooks_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="BackHomeButton" Grid.Column="1" Content="&lt;&lt;Назад" HorizontalAlignment="Left" Grid.Row="10" VerticalAlignment="Center" Height="30" Width="120" Background="#FF777476" BorderBrush="#FF3F2747" FontWeight="Bold" Foreground="White" FontSize="16" Click="Back_Click" Margin="150,0,0,0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,84 @@
+﻿<Window x:Class="Bibliotekka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bibliotekka"
+        mc:Ignorable="d"
+        Title="Библиотека.ру" 
+        Height="650" Width="900"
+        MinHeight="550" MinWidth="750"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip">
+
+    <Grid Background="Black">
+        <Grid x:Name="MainPageGrid">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF3D393D"/>
+                    <GradientStop Color="#FFF3B4EE" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid Margin="30,20,30,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.RowSpan="2" Grid.ColumnSpan="2" 
+                       x:Name="MainImage1" 
+                       Source="/Image2.png" 
+                       Stretch="Fill" 
+                       Opacity="0.3"/>
+
+                <Image Grid.Row="0" Grid.Column="0" 
+                       x:Name="MainImage2" 
+                       Source="/reading (1).png" 
+                       Stretch="Uniform" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       MaxWidth="300"
+                       MaxHeight="350"
+                       Margin="10"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" 
+                           x:Name="MainTextBlock" 
+                           TextWrapping="Wrap" 
+                           Text="Здесь, среди бесконечных рядов книг, время течет иначе. Каждая страница хранит чью-то историю, каждое издание — ключ к новым мирам. Тишина библиотеки наполнена шепотом перелистываемых страниц, ароматом старой бумаги и легким звоном тишины. Это место, где мысли обретают форму, а фантазия — крылья." 
+                           Foreground="#FFD1CBCB" 
+                           FontSize="16" 
+                           TextAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="20,10,10,10"/>
+
+                <Button Grid.Row="1" Grid.ColumnSpan="2" 
+                        x:Name="button_page1" 
+                        Content="Добро пожаловать!" 
+                        HorizontalAlignment="Center" 
+                        Height="45" 
+                        Width="250" 
+                        Margin="0,15,0,10"
+                        Background="#FF42454A" 
+                        FontFamily="Yu Gothic UI Light" 
+                        FontWeight="Bold" 
+                        Foreground="#FFE8E7E2" 
+                        FontSize="18" 
+                        Click="button_page1_Click_1">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <Frame x:Name="MainFrame" Visibility="Collapsed" Panel.ZIndex="10"/>
+    </Grid>
+</Window>

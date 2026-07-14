@@ -1,0 +1,319 @@
+﻿<Page x:Class="Bibliotekka.LoansPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bibliotekka"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="900"
+      Title="LoansPage">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFCECECE"/>
+                <GradientStop Color="#FFF3B4EE" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Margin="40,25,40,25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" 
+                    CornerRadius="20" 
+                    Margin="0,0,0,20"
+                    Padding="20"
+                    ClipToBounds="True"
+                    BorderBrush="#FFA5A5A6"
+                    BorderThickness="3">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE4AFE6"/>
+                        <GradientStop Color="#FF564D4D" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Text="ВОЗВРАТ КНИГ" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#FF565454"
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <Grid Grid.Row="1" Margin="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" 
+                        CornerRadius="15" 
+                        Margin="0,0,10,0"
+                        Padding="15"
+                        BorderBrush="#FFA5A5A6"
+                        BorderThickness="2">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4AFE6" Offset="0.3"/>
+                            <GradientStop Color="#FF564D4D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text=" ИНФОРМАЦИЯ О ВЫДАЧЕ" 
+                                   FontSize="18" 
+                                   FontWeight="Bold" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,15"/>
+
+                        <TextBlock Grid.Row="1" 
+                                   Text="Читатель:" 
+                                   FontSize="14" 
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   Margin="0,0,0,5"/>
+                        <ComboBox Grid.Row="2" 
+                                  x:Name="readersComboBox"
+                                  MinHeight="30"
+                                  Margin="0,0,0,15"
+                                  FontSize="13"
+                                  BorderThickness="2"
+                                  SelectionChanged="ReadersComboBox_SelectionChanged"/>
+
+                        <TextBlock Grid.Row="3" 
+                                   Text="Книга:" 
+                                   FontSize="14" 
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   Margin="0,0,0,5"/>
+                        <ComboBox Grid.Row="4" 
+                                  x:Name="booksComboBox"
+                                  MinHeight="30"
+                                  Margin="0,0,0,15"
+                                  FontSize="13"
+                                  BorderThickness="2"
+                                  SelectionChanged="BooksComboBox_SelectionChanged"/>
+
+                        <TextBlock Grid.Row="5" 
+                                   Text="Дата выдачи:" 
+                                   FontSize="14" 
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   Margin="0,0,0,5"/>
+                        <DatePicker Grid.Row="6" 
+                                    x:Name="LoanDatePicker"
+                                    MinHeight="30"
+                                    Margin="0,0,0,15"
+                                    FontSize="13"
+                                    BorderThickness="2"/>
+
+                        <TextBlock Grid.Row="7" 
+                                   Text="Дата возврата:" 
+                                   FontSize="14" 
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   Margin="0,0,0,5"/>
+                        <DatePicker Grid.Row="8" 
+                                    x:Name="ReturnDatePicker"
+                                    MinHeight="30"
+                                    Margin="0,0,0,15"
+                                    FontSize="13"
+                                    BorderThickness="2"/>
+
+                        <StackPanel Grid.Row="9" 
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,10,0,0">
+                            <Button x:Name="addLoanButton" 
+                                    Content="Выдать книгу" 
+                                    Width="140"
+                                    Height="35"
+                                    Margin="0,0,10,0"
+                                    Background="#FF47315C"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    FontSize="13"
+                                    Cursor="Hand"
+                                    Click="AddLoanButton_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <Button x:Name="clearButton" 
+                                    Content="🧹 Очистить" 
+                                    Width="110"
+                                    Height="35"
+                                    Background="#FFA76BA2"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    FontSize="13"
+                                    Cursor="Hand"
+                                    Click="ClearButton_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1" 
+                        CornerRadius="15" 
+                        Margin="10,0,0,0"
+                        Padding="15"
+                        BorderBrush="#FFA5A5A6"
+                        BorderThickness="2">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4AFE6" Offset="0.3"/>
+                            <GradientStop Color="#FF564D4D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" 
+                                   Text="📋 СПИСОК ВЫДАЧ" 
+                                   FontSize="18" 
+                                   FontWeight="Bold" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,10"/>
+
+                        <StackPanel Grid.Row="1" 
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,0,0,10">
+                            <RadioButton x:Name="AllRadio" 
+                                         Content="Все" 
+                                         IsChecked="True"
+                                         Foreground="White"
+                                         Margin="0,0,15,0"
+                                         Checked="AllRadio_Checked"/>
+                            <RadioButton x:Name="ActiveRadio" 
+                                         Content="Активные" 
+                                         Foreground="White"
+                                         Margin="0,0,15,0"
+                                         Checked="ActiveRadio_Checked"/>
+                            <RadioButton x:Name="ReturnedRadio" 
+                                         Content="Возвращены" 
+                                         Foreground="White"
+                                         Margin="0,0,15,0"
+                                         Checked="ReturnedRadio_Checked"/>
+                            <RadioButton x:Name="OverdueRadio" 
+                                         Content="Просрочены" 
+                                         Foreground="#FFFF6B6B"
+                                         Checked="OverdueRadio_Checked"/>
+                        </StackPanel>
+
+                        <ListBox Grid.Row="2" 
+                                 x:Name="LoansListBox"
+                                 Background="#FFAB88AF" 
+                                 BorderThickness="1" 
+                                 FontSize="13"
+                                 Margin="0,0,0,10"
+                                 MinHeight="100"
+                                 MaxHeight="250"
+                                 BorderBrush="#FF444854"
+                                 SelectionChanged="LoansListBox_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="5" Margin="2">
+                                        <TextBlock Text="{Binding}" Foreground="Black"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <StackPanel Grid.Row="3" 
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <Button x:Name="returnBookButton" 
+                                    Content="✅ Вернуть книгу" 
+                                    Width="140"
+                                    Height="35"
+                                    Margin="0,0,10,0"
+                                    Background="#FF47315C"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    FontSize="13"
+                                    Cursor="Hand"
+                                    Click="ReturnBookButton_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <Button x:Name="deleteLoanButton" 
+                                    Content="Удалить запись" 
+                                    Width="130"
+                                    Height="35"
+                                    Background="#FFA76BA2"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    FontSize="13"
+                                    Cursor="Hand"
+                                    Click="DeleteLoanButton_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <StackPanel Grid.Row="2" 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="0,10,0,0">
+                <Button x:Name="backButton" 
+                        Content="⬅ Назад" 
+                        Width="130"
+                        Height="40"
+                        Background="#FF777476"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Cursor="Hand"
+                        Click="BackButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

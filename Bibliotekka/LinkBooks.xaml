@@ -1,0 +1,232 @@
+﻿<Page x:Class="Bibliotekka.LinkBooks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bibliotekka"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="900"
+      Title="LinkBooks">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFC9C9C9"/>
+                <GradientStop Color="#FFF3B4EE" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Margin="40,25,40,25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" 
+                    CornerRadius="20" 
+                    Margin="0,0,0,15"
+                    Padding="20"
+                    ClipToBounds="True"
+                    BorderBrush="#FFA5A5A6"
+                    BorderThickness="3">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE4AFE6"/>
+                        <GradientStop Color="#FF564D4D" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Text="🔗 СВЯЗЫВАНИЕ КНИГ И АВТОРОВ" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#FF565454"
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" 
+                        CornerRadius="15" 
+                        Margin="0,0,10,0"
+                        Padding="15"
+                        BorderBrush="#FFA5A5A6"
+                        BorderThickness="2">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4AFE6" Offset="0.3"/>
+                            <GradientStop Color="#FF564D4D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="📚 Выберите книгу" 
+                                   FontSize="16" 
+                                   FontWeight="Bold" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,15"/>
+
+                        <ComboBox x:Name="booksComboBox" 
+                                  MinHeight="35"
+                                  FontSize="14"
+                                  BorderThickness="2"
+                                  SelectedValuePath="BookId"
+                                  SelectionChanged="BooksComboBox_SelectionChanged"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" 
+                        CornerRadius="15" 
+                        Margin="5,0,5,0"
+                        Padding="15"
+                        BorderBrush="#FFA5A5A6"
+                        BorderThickness="2">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4AFE6" Offset="0.3"/>
+                            <GradientStop Color="#FF564D4D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="⚡ ДЕЙСТВИЯ" 
+                                   FontSize="16" 
+                                   FontWeight="Bold" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,15"/>
+
+                        <Button x:Name="LinkButton" 
+                                Content="🔗 Связать" 
+                                Width="160"
+                                Height="40"
+                                Margin="0,0,0,10"
+                                Background="#FF777476"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                FontSize="14"
+                                Cursor="Hand"
+                                Click="LinkButton_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Button x:Name="DeleteLink" 
+                                Content="❌ Удалить связь" 
+                                Width="160"
+                                Height="40"
+                                Background="#FF4F356D"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                FontSize="14"
+                                Cursor="Hand"
+                                Click="UnlinkButton_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" 
+                        CornerRadius="15" 
+                        Margin="10,0,0,0"
+                        Padding="15"
+                        BorderBrush="#FFA5A5A6"
+                        BorderThickness="2">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4AFE6" Offset="0.3"/>
+                            <GradientStop Color="#FF564D4D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="✍️ Выберите автора" 
+                                   FontSize="16" 
+                                   FontWeight="Bold" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,15"/>
+
+                        <ComboBox x:Name="authorsComboBox" 
+                                  MinHeight="35"
+                                  FontSize="14"
+                                  BorderThickness="2"
+                                  SelectedValuePath="AuthorId"
+                                  SelectionChanged="AuthorsComboBox_SelectionChanged"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Border Grid.Row="2" 
+                    CornerRadius="15" 
+                    Padding="15"
+                    BorderBrush="#FFA5A5A6"
+                    BorderThickness="2"
+                    Margin="0,10,0,10">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE4AFE6" Offset="0.3"/>
+                        <GradientStop Color="#FF564D4D" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="📖 СУЩЕСТВУЮЩИЕ СВЯЗИ" 
+                               FontSize="14" 
+                               FontWeight="Bold" 
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,8"/>
+
+                    <ListBox Grid.Row="1" 
+                             x:Name="linkedItemsList" 
+                             Background="White" 
+                             BorderThickness="1" 
+                             FontSize="13"
+                             MaxHeight="100"
+                             MinHeight="50"
+                             SelectionChanged="linkedItemsList_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Foreground="Black" Padding="3"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,5,0,0">
+                <Button x:Name="backHomeButton" 
+                        Content="⬅ Назад к добавлению" 
+                        Width="200"
+                        Height="35"
+                        Background="#FF777476"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Cursor="Hand"
+                        Click="BackButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

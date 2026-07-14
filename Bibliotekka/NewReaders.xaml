@@ -1,0 +1,302 @@
+﻿<Page x:Class="Bibliotekka.NewReaders"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bibliotekka"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="900"
+      Title="NewReaders">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFC9C9C9"/>
+                <GradientStop Color="#FFF3B4EE" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Border CornerRadius="20" 
+                Margin="40,25,40,0"
+                Padding="20"
+                Height="80"
+                ClipToBounds="True"
+                BorderBrush="#FFA5A5A6"
+                BorderThickness="3"
+                VerticalAlignment="Top">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE4AFE6"/>
+                    <GradientStop Color="#FF564D4D" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock Text="📚 ДОБАВИТЬ НОВОГО ЧИТАТЕЛЯ" 
+                       FontSize="22" 
+                       FontWeight="Bold" 
+                       Foreground="#FF565454"
+                       HorizontalAlignment="Center" Margin="0,-3,0,0" Height="34" VerticalAlignment="Top"/>
+        </Border>
+
+        <Grid Margin="40,110,40,25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Имя:" 
+                       FontSize="18"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       Foreground="#FF565454"/>
+            <TextBox x:Name="nameReaders" 
+                     Grid.Row="1" 
+                     Grid.Column="0"
+                     FontSize="14" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Center" 
+                     Width="330" 
+                     Height="35"
+                     BorderBrush="#FF8A65A0"
+                     BorderThickness="2">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <TextBlock Text="Фамилия:"
+                       Grid.Row="2" 
+                       Grid.Column="0" 
+                       FontSize="18"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       Foreground="#FF565454"/>
+            <TextBox x:Name="surnameReaders"
+                     Grid.Row="3" 
+                     Grid.Column="0"
+                     FontSize="14" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Center" 
+                     Width="330" 
+                     Height="35"
+                     BorderBrush="#FF8A65A0"
+                     BorderThickness="2">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <TextBlock Text="Номер телефона:" 
+                       Grid.Row="4" 
+                       Grid.Column="0"
+                       FontSize="18"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       Foreground="#FF565454"/>
+            <TextBox x:Name="phoneReaders"
+                     Grid.Row="5" 
+                     Grid.Column="0"
+                     FontSize="14" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Center" 
+                     Width="330" 
+                     Height="35"
+                     BorderBrush="#FF8A65A0"
+                     BorderThickness="2">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <StackPanel Grid.Row="6" 
+                        Grid.Column="0"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="0,15,0,0">
+                <Button x:Name="addButton"
+                        Content="➕ Добавить"
+                        Width="120" 
+                        Height="45"
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Click="AddButton_Click" 
+                        Background="#FF8A65A0" 
+                        Foreground="White"
+                        Cursor="Hand"
+                        Margin="0,0,10,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" 
+                                                    To="#FF9B75B5" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" 
+                                                    To="#FF8A65A0" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="cleanButton"
+                        Content="✏️ Очистить"
+                        Width="140" 
+                        Height="45"
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Click="cleanButton_Click" 
+                        Background="#FF6A9FB5" 
+                        Foreground="White"
+                        Cursor="Hand"
+                        Margin="0,0,10,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" 
+                                                    To="#FF7DB0C5" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" 
+                                                    To="#FF6A9FB5" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="deleteButton"
+                        Content="🗑️ Удалить"
+                        Width="135" 
+                        Height="45"
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Click="DeleteButton_Click" 
+                        Background="#FF967E98" 
+                        Foreground="White"
+                        Cursor="Hand">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" 
+                                                    To="#FFA88EB0" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" 
+                                                    To="#FF967E98" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackPanel>
+
+            <Button Grid.Row="8" 
+                    Grid.Column="0"
+                    x:Name="BackButton" 
+                    Content="⬅ Назад" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center"
+                    Width="130" 
+                    Height="40"
+                    Margin="0,10,0,0"
+                    Background="#FF777476" 
+                    Foreground="White"
+                    FontWeight="Bold" 
+                    FontSize="15" 
+                    Cursor="Hand"
+                    Click="BackButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="Background.Color" 
+                                                To="#FF8A8A8A" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="Background.Color" 
+                                                To="#FF777476" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <ListBox x:Name="listReaders" 
+                     Grid.Row="0" 
+                     Grid.Column="1" 
+                     Grid.RowSpan="9"
+                     Margin="20,0,0,0"
+                     FontSize="14" 
+                     Background="#FFCEB3CB" 
+                     BorderBrush="#FF8A65A0"
+                     BorderThickness="2"
+                     SelectionMode="Single"
+                     SelectionChanged="ListReaders_SelectionChanged">
+                <ListBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </ListBox.Resources>
+            </ListBox>
+        </Grid>
+    </Grid>
+</Page>
